@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Axios from "axios";
+
+
 
 function App() {
 
@@ -17,6 +20,17 @@ function App() {
 
   const handleApi = () => {
     console.log({ email, password })
+    Axios.post('https://reqres.in/api/login', {
+      email: email,
+      password: password
+    }).then(result => {
+      console.log(result.data)
+      alert('success')
+    })
+      .catch(error => {
+        alert('service error')
+        console.log(error)
+      })
   }
 
 
